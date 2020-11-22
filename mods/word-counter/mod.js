@@ -83,20 +83,32 @@ module.exports = {
             `<span id="word-counter-details-tooltip"></span>`
           );
         function showPageWordDetails() {
+          // function countWords(text) {
+          //   let cnt = 0;
+          //   text.replace(/[\s^`~!@#$%^&*()-+={}\[\]:;"'<>,.?/|\\]+/g, ' ').split(' ').forEach(slice => {
+          //     slice = slice.replace(/\w+/g, () => {
+          //       cnt++;
+          //       return '';
+          //     });
+          //     cnt += slice.split('').length;
+          //   });
+          //   return cnt;
+          // }
+          const words = $page.innerText.match(/\w+|[\u4e00-\u9fa5]/g);
           const details = {
-            words: $page.innerText.replace(/\s+/g, ' ').split(' ').length,
-            characters: $page.innerText.length,
-            sentences: $page.innerText.split('.').length,
+            words: words !== null ? words.length : 0,
+            // characters: $page.innerText.length,
+            // sentences: $page.innerText.split('.').length,
             blocks: $page.querySelectorAll('[data-block-id]').length,
           };
-          details['reading time'] = [
-            humanTime(details.words / 275),
-            '~275 wpm',
-          ];
-          details['speaking time'] = [
-            humanTime(details.words / 180),
-            '~180 wpm',
-          ];
+          // details['reading time'] = [
+          //   humanTime(details.words / 275),
+          //   '~275 wpm',
+          // ];
+          // details['speaking time'] = [
+          //   humanTime(details.words / 180),
+          //   '~180 wpm',
+          // ];
 
           $container.children[0].innerHTML = `
             <span><b>page details<br></b> (click to copy)</span>
@@ -105,7 +117,7 @@ module.exports = {
                 prev +
                 (Array.isArray(details[key])
                   ? `<p>
-                      <b>${details[key][0]}</b> ${key} 
+                      <b>${details[key][0]}</b> ${key}
                       <!-- from https://fontawesome.com/icons/question-circle?style=regular -->
                       <svg data-tooltip="${details[key][1]}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <path

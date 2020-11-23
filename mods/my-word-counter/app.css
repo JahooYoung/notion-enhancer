@@ -1,0 +1,65 @@
+/*
+ * scroll-to-top
+ * (c) 2020 dragonwocky <thedragonring.bod@gmail.com> (https://dragonwocky.me/)
+ * (c) 2020 CloudHill
+ * under the MIT license
+ */
+
+.bottom-right-buttons {
+  position: absolute;
+  bottom: 33px;
+  right: 33px;
+  z-index: 101;
+  cursor: default;
+  pointer-events: none;
+}
+
+.bottom-right-buttons > div {
+  margin-top: 8px;
+  pointer-events: auto;
+
+  user-select: none;
+  transition: opacity 700ms ease 0s, color 700ms ease 0s,
+    transform 700ms ease 0s;
+  cursor: pointer;
+
+  position: static !important;
+
+  /* width: 72px;
+  height: 36px; */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* border-radius: 100%;
+  font-size: 20px;
+
+  background: var(--theme--interactive_hover); */
+  box-shadow: 0 0 0 0.5px var(--theme--interactive_hover-border);
+}
+
+.notion-scroll-button {
+  display: flex !important;
+  flex-wrap: wrap;
+  margin: -0.5em;
+}
+.notion-scroll-button > p {
+  margin: 0.5em;
+  cursor: pointer;
+  font-size: var(--theme--font_label-size);
+  color: var(--theme--text);
+  border-radius: 3px;
+  padding: 0.25rem 0.5rem;
+  background: var(--theme--interactive_hover);
+  border: 1px solid transparent;
+}
+.notion-scroll-button > p:hover {
+  background: transparent;
+  border: 1px solid var(--theme--interactive_hover);
+}
+
+.notion-scroll-button > svg {
+  width: 18px;
+  height: 18px;
+}
